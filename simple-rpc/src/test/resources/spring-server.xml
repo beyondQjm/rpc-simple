@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<context:component-scan base-package="qjm.test.impl"/>
+
+    <context:property-placeholder location="classpath:zk.properties"/>
+
+	<!-- 使用zookeeper-->
+    <!-- <bean id="zkServer" class="qjm.rpc.zk.ZkServer">
+    	<constructor-arg name="monitorServer" value="${monitorServer}"/>
+    	<constructor-arg name="zkServeres" value="${zkServeres}"/>
+    	<constructor-arg name="serverPath" value="${serverPath}"/>
+    	<constructor-arg name="timeout" value="${timeout}"/>
+    </bean>
+    
+    <bean id="rpcServer" class="qjm.rpc.server.RpcServer">
+        <constructor-arg name="zkServer" ref="zkServer"/>
+    </bean> -->
+    
+    
+    <!-- =================================== -->
+    
+    
+    <!-- 不使用zookeeper -->
+    <bean id="rpcServer" class="qjm.rpc.server.RpcServer">
+        <constructor-arg name="monitorServer" value="${monitorServer}"/>
+    </bean>
+
+</beans>
